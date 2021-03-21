@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ionic - Formulários</title>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+	<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js">
+
+	</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+</head>
+
+<body>
+	<ion-app>
+		<ion-content>
+			<ion-grid class="ion-no-padding" style="height: 100%">
+				<ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
+					<ion-col>
+						<form action="" method="POST" onSubmit="return validarForm();">
+							<ion-input name="matricula" type="number" placeholder="Matrícula"></ion-input>
+							<ion-input name="senha" type="password" placeholder="Senha"></ion-input>
+							<ion-button type="submit" expand="full">Entrar</ion-button>
+						</form>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-content>
+	</ion-app>
+	<script>
+		function validarForm() {
+			let matricula = document.querySelector("ion-input[name='matricula']").value;
+			let senha = document.querySelector("ion-input[name='senha']").value;
+			if (!matricula || !senha) {
+				alert('Campos são obrigatórios!');
+				return false;
+			}
+			if (senha.length < 6) {
+				alert('Senha menor que 6 caracteres!');
+				return false;
+			}
+			alert('Sucesso!');
+			return true;
+		}
+	</script>
+</body>
+
+</html>
