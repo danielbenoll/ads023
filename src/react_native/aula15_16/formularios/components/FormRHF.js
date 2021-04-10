@@ -3,7 +3,7 @@ import { Button, Text, TextInput, View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 
 export default function FormRHF() {
-  const { control, handleSubmit, errors } = useForm();
+  const { control, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (values) => { alert('Sucesso!'); };
 
   return (
@@ -12,7 +12,7 @@ export default function FormRHF() {
         rules={{
           required: { value: true, message: 'Matrícula obrigatória' }
         }}
-        render={({ value, onChange }) => (
+        render={({ field: { value, onChange } }) => (
           <TextInput
             style={{ padding: 10 }}
             placeholder="Matrícula"
@@ -29,7 +29,7 @@ export default function FormRHF() {
           required: { value: true, message: 'Senha obrigatória' },
           minLength: { value: 6, message: 'Senha menor que 6 caracteres' }
         }}
-        render={({ value, onChange }) => (
+        render={({ field: { value, onChange } }) => (
           <TextInput
             style={{ padding: 10 }}
             placeholder="Senha"
